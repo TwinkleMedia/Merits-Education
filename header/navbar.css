@@ -1,0 +1,31 @@
+.navbar {
+    background: linear-gradient(45deg, #7e2c27, #510400) !important;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: white !important;
+}
+.nav-link {
+    color: white !important;
+    margin-right: 15px;
+}
+.nav-link:hover {
+    color: #ffdd57 !important;
+}
+.btn-primary {
+    background-color: #ffdd57;
+    border: none;
+    color: black;
+    font-weight: bold;
+}
+.btn-primary:hover {
+    background-color: #ffcc00;
+}
+
+
+.navbar-toggler {
+    border-color: white !important;
+}
+.navbar-toggler-icon {
+    filter: invert(1);
+}

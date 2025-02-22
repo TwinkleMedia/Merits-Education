@@ -9,4 +9,8 @@
 <!-- Css add -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="mediaquery.css">
-<link rel="stylesheet" href="navbar.css">
+<link rel="stylesheet" href="./header/navbar.css">
+
+
+
+<script src="https://kit.fontawesome.com/2a5cfacbfd.js" crossorigin="anonymous"></script>
