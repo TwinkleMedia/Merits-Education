@@ -1,0 +1,15 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background-color:#800000 !important;
+    justify-content: center;
+}
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}

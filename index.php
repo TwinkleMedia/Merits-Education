@@ -30,7 +30,7 @@
 <!-- ------------------next section--------------- -->
 <div class="container mt-5">
     <div class="row g-3">
-        <div class="col-md-4">
+        <div class="col-md-4">   
             <div class="feature-box">
                 <img src="icon1.png" alt="icon">
                 <p><strong>6<sup>th</sup> to 12<sup>th</sup></strong> All Subjects State Board | CBSE | ICSE | IGCSE | STATE Boards</p>
@@ -165,31 +165,84 @@
 <div class="container my-5">
     <div class="row text-center">
         <div class="col-md-4">
+            <a href="#" class="text-decoration-none">
+
+            
             <div class="stats-box">
                 <i class="fas fa-book-open"></i>
                 <div class="stats-number" data-count="87411"></div>
                 <div class="stats-title">Practice Questions</div>
                 <div class="stats-text">A vast collection of questions to test your knowledge.</div>
             </div>
+            </a>
         </div>
+        
         <div class="col-md-4">
-            <div class="stats-box">
+        <a href="#" class="text-decoration-none">
+        <div class="stats-box">
                 <i class="fas fa-tasks"></i>
                 <div class="stats-number" data-count="936">0</div>
                 <div class="stats-title">Assignments</div>
                 <div class="stats-text">Various online and offline assignments for assessment.</div>
             </div>
+</a>
+            
         </div>
         <div class="col-md-4">
+            <a href="./recordedlectures.php" class="text-decoration-none">
             <div class="stats-box">
                 <i class="fas fa-video"></i>
                 <div class="stats-number" data-count="25729">0</div>
                 <div class="stats-title">Recorded Lectures</div>
                 <div class="stats-text">Access recorded video lectures to revise your lessons.</div>
             </div>
+            </a>
+            
         </div>
     </div>
 </div>
+
+<!-- ------------------Enquiry Form------------ -->
+<div class="container">
+        <div class="row enquiry-container">
+            <div class="col-md-6 form-image d-none d-md-block"></div>
+            <div class="col-md-6 p-4">
+                <h3 class="mb-4 text-center">Enquiry Form</h3>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Standard</label>
+                        <input type="text" class="form-control" placeholder="Enter your standard">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">School/College</label>
+                        <input type="text" class="form-control" placeholder="Enter your school/college">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Board</label>
+                        <input type="text" class="form-control" placeholder="Enter your board">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" placeholder="Enter your subject">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contact No.</label>
+                        <input type="text" class="form-control" placeholder="Enter your contact number">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<?php include './footer/footer.php';?>
 
     <?php include 'js.php';?>
 </body>

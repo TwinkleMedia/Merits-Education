@@ -45,6 +45,8 @@ body{
     padding: var(--spacing-md);
   }
 
+ 
+
 /* ------------Hero Section----------- */
 
 /* ----------------next page */
@@ -180,4 +182,21 @@ h2 {
 .stats-text {
   font-size: 14px;
   color: #6c757d;
+}
+
+
+/* --------------Enquiry Form------- */
+
+.enquiry-container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.form-image {
+  background: url('https://via.placeholder.com/400') no-repeat center center/cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
