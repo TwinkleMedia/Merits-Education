@@ -201,6 +201,29 @@
         </div>
     </div>
 </div>
+<!-- -----------gallery section   -->
+<div class="container py-5">
+        <h2 class="text-center mb-4">Gallery Section</h2>
+        <div class="text-center mb-4">
+            <button class="btn btn-primary filter-btn" data-filter="all">All</button>
+            <button class="btn btn-secondary filter-btn" data-filter="event">Event</button>
+            <button class="btn btn-secondary filter-btn" data-filter="classroom">Classroom</button>
+            <button class="btn btn-secondary filter-btn" data-filter="student">Student</button>
+            <button class="btn btn-secondary filter-btn" data-filter="exam">Exam</button>
+        </div>
+        <div class="row">
+            <div class="col-md-4 gallery-item event show"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Event"></div>
+            <div class="col-md-4 gallery-item event show"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Event"></div>
+            <div class="col-md-4 gallery-item classroom"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Classroom"></div>
+            <div class="col-md-4 gallery-item classroom"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Classroom"></div>
+            <div class="col-md-4 gallery-item student"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Student"></div>
+            <div class="col-md-4 gallery-item student"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Student"></div>
+            <div class="col-md-4 gallery-item exam"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Exam"></div>
+            <div class="col-md-4 gallery-item exam"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Exam"></div>
+        </div>
+    </div>
+
+
 
 <!-- ------------------Enquiry Form------------ -->
 <div class="container">
@@ -240,6 +263,57 @@
             </div>
         </div>
     </div>
+
+<!-- -----------Faq--------------- -->
+<div class="container my-5">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        <div class="accordion" id="faqAccordion">
+            
+            <!-- FAQ Items -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                        What courses does Merits Education offer?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We offer coaching for classes 6th to 12th (Science & Commerce) for CBSE, ICSE, IGCSE, and State Boards.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                        Which languages can I learn at Merits Education?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        We provide courses in German, Japanese, and Advanced English.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More FAQ items -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                        What makes Merits Education unique?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Our institute has been providing quality education since 1995 with a highly experienced team of teachers.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add 12 more FAQ items following the same pattern -->
+        </div>
+    </div>
+
 
 
 <?php include './footer/footer.php';?>

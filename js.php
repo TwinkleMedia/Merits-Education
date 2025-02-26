@@ -87,3 +87,26 @@
 
     observer.observe(document.querySelector('.container'));
 </script>
+
+
+<!-- --------Gallery---------------- -->
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const filterButtons = document.querySelectorAll(".filter-btn");
+            const galleryItems = document.querySelectorAll(".gallery-item");
+            
+            filterButtons.forEach(button => {
+                button.addEventListener("click", function () {
+                    const filter = this.getAttribute("data-filter");
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === "all" || item.classList.contains(filter)) {
+                            item.classList.add("show");
+                        } else {
+                            item.classList.remove("show");
+                        }
+                    });
+                });
+            });
+        });
+    </script>
