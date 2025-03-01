@@ -335,13 +335,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./../admin/pages/uploadSlider.php" class="nav-link" data-title="Upload Slider">
+                    <a href="../../admin/pages/uploadSlider.php" class="nav-link" data-title="Upload Slider">
                         <i class="nav-icon fa fa-sliders"></i>
                         <span class="nav-text">Upload Slider</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="./../admin/pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
+                    <a href="../../admin/pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
                         <i class="nav-icon fas fa-images"></i>
                         <span class="nav-text">Upload Gallery Images</span>
                     </a>
