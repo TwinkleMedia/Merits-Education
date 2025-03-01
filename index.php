@@ -227,42 +227,43 @@
 
 <!-- ------------------Enquiry Form------------ -->
 <div class="container">
-        <div class="row enquiry-container">
-            <div class="col-md-6 form-image d-none d-md-block"></div>
-            <div class="col-md-6 p-4">
-                <h3 class="mb-4 text-center">Enquiry Form</h3>
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" placeholder="Enter your name">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Standard</label>
-                        <input type="text" class="form-control" placeholder="Enter your standard">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">School/College</label>
-                        <input type="text" class="form-control" placeholder="Enter your school/college">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Board</label>
-                        <input type="text" class="form-control" placeholder="Enter your board">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Subject</label>
-                        <input type="text" class="form-control" placeholder="Enter your subject">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Contact No.</label>
-                        <input type="text" class="form-control" placeholder="Enter your contact number">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
+    <div class="row enquiry-container">
+        <div class="col-md-6 form-image d-none d-md-block"></div>
+        <div class="col-md-6 p-4">
+            <h3 class="mb-4 text-center">Enquiry Form</h3>
+            <form action="enquiry_process.php" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Standard</label>
+                    <input type="text" class="form-control" name="standard" placeholder="Enter your standard" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">School/College</label>
+                    <input type="text" class="form-control" name="school_college" placeholder="Enter your school/college" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Board</label>
+                    <input type="text" class="form-control" name="board" placeholder="Enter your board" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" placeholder="Enter your subject" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact No.</label>
+                    <input type="text" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
 
 <!-- -----------Faq--------------- -->
 <div class="container my-5">
