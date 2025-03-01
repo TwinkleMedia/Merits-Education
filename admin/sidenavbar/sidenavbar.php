@@ -335,19 +335,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../pages/uploadSlider.php" class="nav-link" data-title="Upload Slider">
+                    <a href="./../admin/pages/uploadSlider.php" class="nav-link" data-title="Upload Slider">
                         <i class="nav-icon fa fa-sliders"></i>
                         <span class="nav-text">Upload Slider</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../../../Merits-Education/admin/pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
+                    <a href="./../admin/Merits-Education/admin/pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
                         <i class="nav-icon fas fa-images"></i>
                         <span class="nav-text">Upload Gallery Images</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../../../Merits-Education/admin/pages/Uploadvideo.php" class="nav-link" data-title="Upload Videos">
+                    <a href="../../admin/pages/Uploadvideo.php" class="nav-link" data-title="Upload Videos">
                         <i class="nav-icon fas fa-video"></i>
                         <span class="nav-text">Upload Videos</span>
                     </a>
@@ -356,7 +356,7 @@
             
             <!-- Logout Button -->
             <div class="logout-container">
-                <a href="../login/logout.php" class="logout-btn" data-title="Logout">
+                <a href="../../admin/login/logout.php" class="logout-btn" data-title="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-text">Logout</span>
                 </a>
