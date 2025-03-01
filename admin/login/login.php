@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 error_log("Login successful for: " . $username);
                 
                 // Redirect to admin page
-                header("Location:../admin/admin.php../admin/admin.php");
+                header("Location:../admin/admin.php");
                 exit();
             } else {
                 $error = "Invalid Username or Password!";
