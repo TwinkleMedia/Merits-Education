@@ -20,7 +20,7 @@
 
     <div class="wrapper">
         <!-- Include the sidebar -->
-        <?php include '../../../Merits-Education/admin/sidenavbar/sidenavbar.php'; ?>
+        <?php include '../sidenavbar/sidenavbar.php'; ?>
 
         <!-- Content Area -->
         <div class="content">

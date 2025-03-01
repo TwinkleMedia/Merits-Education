@@ -54,7 +54,7 @@ $videos = $conn->query("SELECT * FROM videos ORDER BY created_at DESC");
    <div class="mobile-overlay"></div>
     <div class="wrapper">
 
-            <?php include '../../../Merits-Education/admin/sidenavbar/sidenavbar.php'; ?>
+            <?php include '../sidenavbar/sidenavbar.php'; ?>
     
 
         <div class="content">
