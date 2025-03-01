@@ -2,38 +2,44 @@
 session_start(); 
 include './dbconfig.php';
 
-$error = ""; // Initialize error message variable
-
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-    
-    // Fetch user details securely
-    $sql = "SELECT * FROM adminuser WHERE username=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
-        
-        if (password_verify($password, $row['password'])) {
-            // ✅ Password is hashed and verified
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['username'] = $username;
-            $_SESSION['last_activity'] = time(); // Track session time
-            header("Location: ../admin.php");
-            exit();
-        } else {
-            $error = "Invalid Username or Password!";
-        }
-    } else {
-        $error = "Invalid Username or Password!";
-    }
-    $stmt->close();
+// Check if POST data is received
+if (!isset($_POST['username']) || !isset($_POST['password'])) {
+    echo json_encode(["error" => "Username or password missing"]);
+    exit();
 }
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Query to check user credentials
+$sql = "SELECT * FROM adminuser WHERE username = ?";
+$stmt = $conn->prepare($sql);
+
+if (!$stmt) {
+    echo json_encode(["error" => "Query preparation failed: " . $conn->error]);
+    exit();
+}
+
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows == 1) {
+    $user = $result->fetch_assoc();
+
+    // Verify password (assuming password is hashed in the DB)
+    if (password_verify($password, $user['password'])) {
+        $_SESSION['username'] = $username;
+        echo json_encode(["success" => "Login successful"]);
+    } else {
+        echo json_encode(["error" => "Invalid username or password"]);
+    }
+} else {
+    echo json_encode(["error" => "User not found"]);
+}
+
+$stmt->close();
+$conn->close();
 ?>
 
 <!DOCTYPE html>
