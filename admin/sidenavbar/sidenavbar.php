@@ -329,7 +329,7 @@
 
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="../../../Merits-Education/admin/pages/enquiryMessages.php" class="nav-link active" data-title="Enquiry Messages">
+                    <a href="../../admin/pages/enquiryMessages.php" class="nav-link active" data-title="Enquiry Messages">
                         <i class="nav-icon fas fa-envelope"></i>
                         <span class="nav-text">Enquiry Messages</span>
                     </a>
