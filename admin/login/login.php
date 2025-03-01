@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Password is hashed and verified
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['username'] = $username;
-            header("Location: ../../Merits-Education/admin/admin.php");
+            header("Location: ../admin.php");
             exit();
         } else if ($password === $row['password']) {
             // Password is stored as plaintext, but matches
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['username'] = $username;
-            header("Location: ../../Merits-Education/admin/admin.php");
+            header("Location: ../admin.php");
             exit();
         } else {
             $error = "Invalid Username or Password!";
