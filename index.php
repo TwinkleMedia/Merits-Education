@@ -215,6 +215,7 @@ $result = mysqli_query($conn, $query);
     </div>
 </div>
 <!-- -----------gallery section   -->
+<!-- -----------Gallery Section   -->
 <?php
 include './dbconnuser.php'; // Include your database connection file
 
@@ -227,16 +228,20 @@ $categoriesResult = mysqli_query($conn, $categoriesQuery);
 <div class="container py-5">
     <h2 class="text-center mb-4">Gallery Section</h2>
     
-    <div class="text-center mb-4">
-        <button class="btn btn-primary filter-btn" data-filter="all">All</button>
-        <?php
-        while ($category = mysqli_fetch_assoc($categoriesResult)) {
-            echo '<button class="btn btn-secondary filter-btn" data-filter="cat-' . $category['id'] . '">' . $category['category_name'] . '</button>';
-        }
-        ?>
+    <!-- Filter buttons -->
+    <div class="gallery-filter-container text-center mb-4">
+        <div class="filter-buttons d-flex flex-wrap justify-content-center">
+            <button class="btn btn-primary filter-btn m-1 active" data-filter="all">All</button>
+            <?php
+            while ($category = mysqli_fetch_assoc($categoriesResult)) {
+                echo '<button class="btn btn-outline-primary filter-btn m-1" data-filter="cat-' . $category['id'] . '">' . $category['category_name'] . '</button>';
+            }
+            ?>
+        </div>
     </div>
 
-    <div class="row">
+    <!-- Gallery grid -->
+    <div class="row g-4" id="gallery-grid">
         <?php
         // Fetch gallery images with categories
         $imagesQuery = "SELECT gallery_images.image_path, gallery_images.category_id, gallery_categories.category_name 
@@ -245,9 +250,12 @@ $categoriesResult = mysqli_query($conn, $categoriesQuery);
         $imagesResult = mysqli_query($conn, $imagesQuery);
 
         while ($image = mysqli_fetch_assoc($imagesResult)) {
-            echo '<div class="col-md-4 gallery-item cat-' . $image['category_id'] . '">';
-            echo '<img src="./admin/pages/' . $image['image_path'] . '" class="img-fluid" alt="Gallery Image">';
-
+            echo '<div class="col-6 col-md-4 col-lg-3 gallery-item cat-' . $image['category_id'] . '">';
+            echo '  <div class="gallery-card h-100">';
+            echo '    <div class="gallery-image-wrapper">';
+            echo '      <img src="./admin/pages/' . $image['image_path'] . '" class="img-fluid w-100" alt="Gallery Image" loading="lazy">';
+            echo '    </div>';
+            echo '  </div>';
             echo '</div>';
         }
         ?>
