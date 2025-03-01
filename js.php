@@ -91,22 +91,23 @@
 
 <!-- --------Gallery---------------- -->
 <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const filterButtons = document.querySelectorAll(".filter-btn");
-            const galleryItems = document.querySelectorAll(".gallery-item");
-            
-            filterButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    const filter = this.getAttribute("data-filter");
-                    
-                    galleryItems.forEach(item => {
-                        if (filter === "all" || item.classList.contains(filter)) {
-                            item.classList.add("show");
-                        } else {
-                            item.classList.remove("show");
-                        }
-                    });
+    // JavaScript to filter gallery images
+    document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            let filter = this.getAttribute("data-filter");
+            let items = document.querySelectorAll(".gallery-item");
+
+            if (filter === "all") {
+                items.forEach(item => item.style.display = "block");
+            } else {
+                items.forEach(item => {
+                    if (item.classList.contains(filter)) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
                 });
-            });
+            }
         });
-    </script>
+    });
+</script>

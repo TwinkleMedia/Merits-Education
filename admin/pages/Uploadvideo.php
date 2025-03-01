@@ -80,7 +80,7 @@ $videos = $conn->query("SELECT * FROM videos ORDER BY created_at DESC");
                         </div>
                         <div class="mb-3">
                             <label for="videoLink" class="form-label">YouTube Video Link</label>
-                            <input type="url" class="form-control" id="videoLink" name="videoLink" required>
+                            <input type="text" class="form-control" id="videoLink" name="videoLink" required>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Submit</button>
                     </form>

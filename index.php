@@ -12,17 +12,30 @@
 
 <?php include './header/navbar.php';?>
 <!-- --------------------Hero Section--------------------- -->
+<?php
+include './dbconnuser.php'; // Include your database connection file
+
+$query = "SELECT image_path FROM slider_images ORDER BY uploaded_at DESC";
+$result = mysqli_query($conn, $query);
+?>
+
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./assest/slider img/mhcet-banner.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assest/slider img/mhcet-banner.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assest/slider img/mhcet-banner.jpg" class="d-block w-100" alt="...">
-    </div>
+    <?php
+    $active = true;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $imagePath = './admin/pages/' . $row['image_path']; // Ensure correct path
+        ?>
+        <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
+            <img src="<?php echo $imagePath; ?>" class="d-block w-100" alt="Slider Image">
+        </div>
+        <?php
+        $active = false;
+    }
+    ?>
+  </div>
+</div>
+
   </div>
 </div>
 
@@ -202,26 +215,44 @@
     </div>
 </div>
 <!-- -----------gallery section   -->
+<?php
+include './dbconnuser.php'; // Include your database connection file
+
+// Fetch categories
+$categoriesQuery = "SELECT * FROM gallery_categories";
+$categoriesResult = mysqli_query($conn, $categoriesQuery);
+?>
+
+<!-- -----------Gallery Section   -->
 <div class="container py-5">
-        <h2 class="text-center mb-4">Gallery Section</h2>
-        <div class="text-center mb-4">
-            <button class="btn btn-primary filter-btn" data-filter="all">All</button>
-            <button class="btn btn-secondary filter-btn" data-filter="event">Event</button>
-            <button class="btn btn-secondary filter-btn" data-filter="classroom">Classroom</button>
-            <button class="btn btn-secondary filter-btn" data-filter="student">Student</button>
-            <button class="btn btn-secondary filter-btn" data-filter="exam">Exam</button>
-        </div>
-        <div class="row">
-            <div class="col-md-4 gallery-item event show"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Event"></div>
-            <div class="col-md-4 gallery-item event show"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Event"></div>
-            <div class="col-md-4 gallery-item classroom"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Classroom"></div>
-            <div class="col-md-4 gallery-item classroom"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Classroom"></div>
-            <div class="col-md-4 gallery-item student"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Student"></div>
-            <div class="col-md-4 gallery-item student"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Student"></div>
-            <div class="col-md-4 gallery-item exam"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Exam"></div>
-            <div class="col-md-4 gallery-item exam"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Exam"></div>
-        </div>
+    <h2 class="text-center mb-4">Gallery Section</h2>
+    
+    <div class="text-center mb-4">
+        <button class="btn btn-primary filter-btn" data-filter="all">All</button>
+        <?php
+        while ($category = mysqli_fetch_assoc($categoriesResult)) {
+            echo '<button class="btn btn-secondary filter-btn" data-filter="cat-' . $category['id'] . '">' . $category['category_name'] . '</button>';
+        }
+        ?>
     </div>
+
+    <div class="row">
+        <?php
+        // Fetch gallery images with categories
+        $imagesQuery = "SELECT gallery_images.image_path, gallery_images.category_id, gallery_categories.category_name 
+                        FROM gallery_images 
+                        JOIN gallery_categories ON gallery_images.category_id = gallery_categories.id";
+        $imagesResult = mysqli_query($conn, $imagesQuery);
+
+        while ($image = mysqli_fetch_assoc($imagesResult)) {
+            echo '<div class="col-md-4 gallery-item cat-' . $image['category_id'] . '">';
+            echo '<img src="./admin/pages/' . $image['image_path'] . '" class="img-fluid" alt="Gallery Image">';
+
+            echo '</div>';
+        }
+        ?>
+    </div>
+</div>
 
 
 
