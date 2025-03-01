@@ -19,7 +19,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 </head>
 <body>
     <!-- Include the sidebar navigation -->
-    <?php include '../../Merits-Education/admin/sidenavbar/sidenavbar.php'; ?>
+    <?php include './sidenavbar/sidenavbar.php'; ?>
     
    
     
