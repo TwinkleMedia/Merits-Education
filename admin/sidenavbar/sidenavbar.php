@@ -329,7 +329,7 @@
 
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="../../../Merits-Education/admin/pages/enquiryMessages.php" class="nav-link active" data-title="Enquiry Messages">
+                    <a href="../pages/enquiryMessages.php" class="nav-link active" data-title="Enquiry Messages">
                         <i class="nav-icon fas fa-envelope"></i>
                         <span class="nav-text">Enquiry Messages</span>
                     </a>
@@ -341,13 +341,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../../../Merits-Education/admin/pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
+                    <a href="../pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
                         <i class="nav-icon fas fa-images"></i>
                         <span class="nav-text">Upload Gallery Images</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../../../Merits-Education/admin/pages/Uploadvideo.php" class="nav-link" data-title="Upload Videos">
+                    <a href="../pages/Uploadvideo.php" class="nav-link" data-title="Upload Videos">
                         <i class="nav-icon fas fa-video"></i>
                         <span class="nav-text">Upload Videos</span>
                     </a>
@@ -356,7 +356,7 @@
             
             <!-- Logout Button -->
             <div class="logout-container">
-                <a href="../login/logout.php" class="logout-btn" data-title="Logout">
+                <a href="../login/logsout.php" class="logout-btn" data-title="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-text">Logout</span>
                 </a>
