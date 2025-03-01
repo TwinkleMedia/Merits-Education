@@ -1,5 +1,5 @@
 <?php session_start(); 
-include '../../Merits-Education/admin/login/dbconfig.php';
+include './dbconfig.php';
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
