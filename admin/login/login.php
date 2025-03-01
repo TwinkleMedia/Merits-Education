@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['admin_logged_in'] = true;
             $_SESSION['username'] = $username;
             $_SESSION['last_activity'] = time(); // Track session time
-            header("Location: ../admin/admin.php");
+            header("Location: ../admin.php");
             exit();
         } else {
             $error = "Invalid Username or Password!";
