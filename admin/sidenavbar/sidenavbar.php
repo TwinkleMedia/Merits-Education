@@ -329,7 +329,7 @@
 
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="../pages/enquiryMessages.php" class="nav-link active" data-title="Enquiry Messages">
+                    <a href="../../../Merits-Education/admin/pages/enquiryMessages.php" class="nav-link active" data-title="Enquiry Messages">
                         <i class="nav-icon fas fa-envelope"></i>
                         <span class="nav-text">Enquiry Messages</span>
                     </a>
@@ -341,13 +341,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
+                    <a href="../../../Merits-Education/admin/pages/uploadGalleryImage.php" class="nav-link" data-title="Gallery Images">
                         <i class="nav-icon fas fa-images"></i>
                         <span class="nav-text">Upload Gallery Images</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../pages/Uploadvideo.php" class="nav-link" data-title="Upload Videos">
+                    <a href="../../../Merits-Education/admin/pages/Uploadvideo.php" class="nav-link" data-title="Upload Videos">
                         <i class="nav-icon fas fa-video"></i>
                         <span class="nav-text">Upload Videos</span>
                     </a>
