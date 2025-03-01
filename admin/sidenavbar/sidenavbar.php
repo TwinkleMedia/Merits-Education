@@ -356,7 +356,7 @@
             
             <!-- Logout Button -->
             <div class="logout-container">
-                <a href="../login/logsout.php" class="logout-btn" data-title="Logout">
+                <a href="../login/logout.php" class="logout-btn" data-title="Logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="nav-text">Logout</span>
                 </a>
