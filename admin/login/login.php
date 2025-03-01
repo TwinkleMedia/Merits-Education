@@ -1,38 +1,66 @@
-<?php 
-session_start(); 
-include './dbconfig.php';
+
+
+<?php
+// login.php
+session_start();
+include './dbconfig.php'; // Make sure this path is correct
 
 $error = ""; // Initialize error message variable
 
+// If already logged in, redirect to admin page
+if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
+    header("Location: ../admin.php");
+    exit();
+}
+
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Add error logging to help debug
+    error_log("Login attempt for username: " . trim($_POST['username']));
+    
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
     
-    // Fetch user details securely
-    $sql = "SELECT * FROM adminuser WHERE username=?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
+    // Validate inputs
+    if (empty($username) || empty($password)) {
+        $error = "Username and password are required";
+    } else {
+        // Fetch user details securely
+        $sql = "SELECT * FROM adminuser WHERE username=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
         
-        if (password_verify($password, $row['password'])) {
-            // ✅ Password is hashed and verified
-            $_SESSION['admin_logged_in'] = true;
-            $_SESSION['username'] = $username;
-            $_SESSION['last_activity'] = time(); // Track session time
-            header("Location: ../admin.php");
-            exit();
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            
+            // Debug logging - DO NOT use in production
+            error_log("Password verification: Input vs Stored");
+            
+            if (password_verify($password, $row['password'])) {
+                // Password is correct
+                $_SESSION['admin_logged_in'] = true;
+                $_SESSION['username'] = $username;
+                $_SESSION['user_id'] = $row['id']; // Store user ID if available
+                $_SESSION['last_activity'] = time(); // Track session time
+                
+                // Debug successful login
+                error_log("Login successful for: " . $username);
+                
+                // Redirect to admin page
+                header("Location: ../admin.php");
+                exit();
+            } else {
+                $error = "Invalid Username or Password!";
+                error_log("Password verification failed for: " . $username);
+            }
         } else {
             $error = "Invalid Username or Password!";
+            error_log("User not found: " . $username);
         }
-    } else {
-        $error = "Invalid Username or Password!";
+        $stmt->close();
     }
-    $stmt->close();
 }
 ?>
 
