@@ -1,6 +1,19 @@
-<?php 
-session_start(); 
-include './dbconfig.php';
+<?php
+session_start();
+header('Content-Type: application/json'); // Ensure JSON response
+
+$servername = "localhost";
+$username = "u694280384_meritsDB";
+$password = "meritsDB@2025";
+$dbname = "u694280384_meritsDB";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check for connection errors
+if ($conn->connect_error) {
+    echo json_encode(["error" => "Database connection failed: " . $conn->connect_error]);
+    exit();
+}
 
 // Check if POST data is received
 if (!isset($_POST['username']) || !isset($_POST['password'])) {
@@ -41,6 +54,7 @@ if ($result->num_rows == 1) {
 $stmt->close();
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html>
