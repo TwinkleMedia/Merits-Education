@@ -13,9 +13,7 @@
   <link rel="stylesheet" href="./page.css">
 </head>
 <body>
-<button class="mobile-toggle d-md-none">
-        <i class="fas fa-bars"></i>
-    </button>
+
 
 
     <div class="wrapper">
