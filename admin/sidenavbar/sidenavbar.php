@@ -34,7 +34,7 @@
 
         .sidebar {
             width: 280px;
-            background: linear-gradient(178deg, var(--secondary-color) 20%, var(--primary-color) 100%);
+            background: linear-gradient(90deg, rgba(0,0,1,1) 0%, rgba(156,19,2,1) 36%);
             color: var(--light-color);
             transition: all var(--transition-speed) ease;
             position: fixed;
