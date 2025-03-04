@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-<script src="../sidenavbar/sidenavbar.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- No need to include sidebar JS as it will be part of the included file -->
 </body>
