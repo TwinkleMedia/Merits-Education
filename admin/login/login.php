@@ -3,7 +3,7 @@
 <?php
 // login.php
 session_start();
-include './dbconfig.php'; // Make sure this path is correct
+include '../login/dbconfig.php'; // Make sure this path is correct
 
 $error = ""; // Initialize error message variable
 
