@@ -9,7 +9,7 @@ $error = ""; // Initialize error message variable
 
 // If already logged in, redirect to admin page
 if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true) {
-    header("Location: ../admin.php");
+    header("Location: ./admin.php");
     exit();
 }
 
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 error_log("Login successful for: " . $username);
                 
                 // Redirect to admin page
-                header("Location: ../admin.php");
+                header("Location: ./admin.php");
                 exit();
             } else {
                 $error = "Invalid Username or Password!";
