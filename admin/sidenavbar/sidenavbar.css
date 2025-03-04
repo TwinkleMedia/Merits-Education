@@ -19,7 +19,7 @@ body {
 
 .sidebar {
     width: 250px;
-    background: linear-gradient(178deg, #967AA0 33%, #03214ED9 100%);
+    background: linear-gradient(90deg, rgba(0,0,1,1) 0%, rgba(156,19,2,1) 36%);
     color: white;
     transition: all var(--transition-speed) ease;
     position: fixed;
