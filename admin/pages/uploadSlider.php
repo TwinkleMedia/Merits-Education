@@ -17,9 +17,7 @@ include '../login/dbconfig.php'; // Include your database connection
 
 
 <body>
-    <button class="mobile-toggle d-md-none">
-        <i class="fas fa-bars"></i>
-    </button>
+ 
 
     <!-- Mobile Overlay -->
     <div class="mobile-overlay"></div>

@@ -47,9 +47,7 @@ $videos = $conn->query("SELECT * FROM videos ORDER BY created_at DESC");
   <link rel="stylesheet" href="./page.css">
 </head>
 <body>
-    <button class="mobile-toggle d-md-none">
-        <i class="fas fa-bars"></i>
-    </button>
+
    <!-- Mobile Overlay -->
    <div class="mobile-overlay"></div>
     <div class="wrapper">
