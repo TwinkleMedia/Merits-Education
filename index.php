@@ -12,45 +12,58 @@
 
 <?php include './header/navbar.php';?>
 <!-- --------------------Hero Section--------------------- -->
+<?php
+include './dbconnuser.php'; // Include your database connection file
+
+$query = "SELECT image_path FROM slider_images ORDER BY uploaded_at DESC";
+$result = mysqli_query($conn, $query);
+?>
+
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./assest/slider img/mhcet-banner.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assest/slider img/mhcet-banner.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assest/slider img/mhcet-banner.jpg" class="d-block w-100" alt="...">
-    </div>
+    <?php
+    $active = true;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $imagePath = './admin/pages/' . $row['image_path']; // Ensure correct path
+        ?>
+        <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
+            <img src="<?php echo $imagePath; ?>" class="d-block w-100" alt="Slider Image">
+        </div>
+        <?php
+        $active = false;
+    }
+    ?>
+  </div>
+</div>
+
   </div>
 </div>
 
 
 <!-- ------------------next section--------------- -->
-<div class="container mt-5">
+<div class="container mt-5"id="coaching">
     <div class="row g-3">
         <div class="col-md-4">   
             <div class="feature-box">
-                <img src="icon1.png" alt="icon">
+            <i class="fa fa-book me-2 main-icon"></i>
                 <p><strong>6<sup>th</sup> to 12<sup>th</sup></strong> All Subjects State Board | CBSE | ICSE | IGCSE | STATE Boards</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="feature-box">
-                <img src="icon2.png" alt="icon">
+            <i class="fa fa-chart-line me-2 main-icon"></i>
                 <p><strong>6<sup>th</sup> & 12<sup>th</sup></strong> Science & Commerce</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="feature-box">
-                <img src="icon3.png" alt="icon">
+            <i class="fa fa-graduation-cap me-2 main-icon"></i>
                 <p><strong>11<sup>th</sup> & 12<sup>th</sup></strong> INTEGRATED JEE, NEET & BOARD</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="feature-box">
-                <img src="icon4.png" alt="icon">
+            <i class="fa fa-language me-2 main-icon"></i>
                 <p><strong>LEARN LANGUAGES (ONE TO ONE) / BATCH</strong> </p>
                 <div class="d-flex justify-content"><li>German</li> <li>Japanese</li> <li>Asdvanced English</li></div>
                 
@@ -58,13 +71,13 @@
         </div>
         <div class="col-md-4">
             <div class="feature-box">
-                <img src="icon5.png" alt="icon">
+            <i class="fa fa-briefcase me-2 main-icon"></i>
                 <p><strong>Career Prep</strong> Extensive Training of UG-ENTRANCE EXAMS for BBA,BMS, HM, CLAT, SM</p>
             </div>
         </div>
         <div class="col-md-4">
             <div class="feature-box">
-                <img src="icon6.png" alt="icon">
+            <i class="fa fa-laptop-code me-2 main-icon"></i>
                 <p><strong>All Subjects Inculding  COMPUTERS / AI</strong><br>CBSE, ICSE, IGCSE, STATE Boards</p>
             </div>
         </div>
@@ -76,9 +89,9 @@
 
 <!-- Special Announcement Button -->
 
-<button id="openPopup" class="btn btn-primary d-flex align-items-center">
+<!-- <button id="openPopup" class="btn btn-primary d-flex align-items-center">
         <i class="fa fa-bullhorn me-2"></i> Special Announcement
-    </button>
+    </button> -->
 
     <!-- Popup Modal -->
     <div id="popup" class="popup-overlay">
@@ -97,22 +110,37 @@
     
 
     <!-- ----About us   -->
-    <div class="container">
+     <div id="about">
+    <div class="container" >
     <div class="row about-section align-items-center">
         <div class="col-12 col-md-6 about-img">
             <img src="./assest/image-frame-img-1.jpg" alt="About Us">
         </div>
         <div class="col-12 col-md-6 about-text">
-            <h2>About Us <span>THE IITIAN'S HUB</span></h2>
-            <p>We are dedicated to providing top-notch services with a focus on quality, innovation, and customer satisfaction. Our team of experts ensures that every project is executed with precision and professionalism.</p>
-            <p>With years of experience in the industry, we have built a reputation for excellence and trust. Join us on our journey to create something remarkable.</p>
+            <h2>About Us <span>MERITS EDUCATION</span></h2>
+            <p>Established in 1995, MERITS EDUCATION has been a beacon of excellence in the field of academic coaching, shaping the future of students across Mumbai and Navi Mumbai. With a legacy of nearly three decades, we have been committed to delivering quality education, empowering young minds, and fostering a love for learning in every student who walks through our doors.
+
+MERITS EDUCATION is the brainchild of two passionate educators, Jayesh Vaidya and Shilpa Vaidya, who envisioned an institute that goes beyond conventional teaching methods to create a nurturing and intellectually stimulating environment. As proprietors and dedicated mentors, they have been instrumental in guiding countless students towards academic success and personal growth.</p>
+            <h3 class="bold">Our Offerings</h3>
+            <p>
+
+At MERITS EDUCATION, we provide comprehensive coaching programs tailored to meet the diverse academic needs of students from Grade 6 to Grade 12, across multiple educational boards including: <br>
+<li>ICSE (Indian Certificate of Secondary Education)</li>
+
+
+<li>CBSE (Central Board of Secondary Education)</li>
+
+<li>IGCSE (International General Certificate of Secondary Education)</li>
+
+<li>STATE Boards</li>
+</p>
         </div>
     </div>
 </div>
-
+</div>
 <!-- -------------Why Choose us-------------- -->
 
-<div class="container why-choose-us">
+<div class="container why-choose-us" >
     <h2>Why Choose Us</h2>
     <div class="row">
         <div class="col-md-4 mb-4">
@@ -202,67 +230,95 @@
     </div>
 </div>
 <!-- -----------gallery section   -->
+<!-- -----------Gallery Section   -->
+<?php
+include './dbconnuser.php'; // Include your database connection file
+
+// Fetch categories
+$categoriesQuery = "SELECT * FROM gallery_categories";
+$categoriesResult = mysqli_query($conn, $categoriesQuery);
+?>
+
+<!-- -----------Gallery Section   -->
 <div class="container py-5">
-        <h2 class="text-center mb-4">Gallery Section</h2>
-        <div class="text-center mb-4">
-            <button class="btn btn-primary filter-btn" data-filter="all">All</button>
-            <button class="btn btn-secondary filter-btn" data-filter="event">Event</button>
-            <button class="btn btn-secondary filter-btn" data-filter="classroom">Classroom</button>
-            <button class="btn btn-secondary filter-btn" data-filter="student">Student</button>
-            <button class="btn btn-secondary filter-btn" data-filter="exam">Exam</button>
-        </div>
-        <div class="row">
-            <div class="col-md-4 gallery-item event show"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Event"></div>
-            <div class="col-md-4 gallery-item event show"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Event"></div>
-            <div class="col-md-4 gallery-item classroom"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Classroom"></div>
-            <div class="col-md-4 gallery-item classroom"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Classroom"></div>
-            <div class="col-md-4 gallery-item student"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Student"></div>
-            <div class="col-md-4 gallery-item student"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Student"></div>
-            <div class="col-md-4 gallery-item exam"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Exam"></div>
-            <div class="col-md-4 gallery-item exam"><img src="https://www.mariapodar.com/wp-content/uploads/2021/03/131.png" class="img-fluid" alt="Exam"></div>
+    <h2 class="text-center mb-4">Gallery Section</h2>
+    
+    <!-- Filter buttons -->
+    <div class="gallery-filter-container text-center mb-4">
+        <div class="filter-buttons d-flex flex-wrap justify-content-center">
+            <button class="btn btn-primary filter-btn m-1 active" data-filter="all">All</button>
+            <?php
+            while ($category = mysqli_fetch_assoc($categoriesResult)) {
+                echo '<button class="btn btn-outline-primary filter-btn m-1" data-filter="cat-' . $category['id'] . '">' . $category['category_name'] . '</button>';
+            }
+            ?>
         </div>
     </div>
+
+    <!-- Gallery grid -->
+    <div class="row g-4" id="gallery-grid">
+        <?php
+        // Fetch gallery images with categories
+        $imagesQuery = "SELECT gallery_images.image_path, gallery_images.category_id, gallery_categories.category_name 
+                        FROM gallery_images 
+                        JOIN gallery_categories ON gallery_images.category_id = gallery_categories.id";
+        $imagesResult = mysqli_query($conn, $imagesQuery);
+
+        while ($image = mysqli_fetch_assoc($imagesResult)) {
+            echo '<div class="col-6 col-md-4 col-lg-3 gallery-item cat-' . $image['category_id'] . '">';
+            echo '  <div class="gallery-card h-100">';
+            echo '    <div class="gallery-image-wrapper">';
+            echo '      <img src="./admin/pages/' . $image['image_path'] . '" class="img-fluid w-100" alt="Gallery Image" loading="lazy">';
+            echo '    </div>';
+            echo '  </div>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+</div>
 
 
 
 <!-- ------------------Enquiry Form------------ -->
 <div class="container">
-        <div class="row enquiry-container">
-            <div class="col-md-6 form-image d-none d-md-block"></div>
-            <div class="col-md-6 p-4">
-                <h3 class="mb-4 text-center">Enquiry Form</h3>
-                <form>
-                    <div class="mb-3">
-                        <label class="form-label">Name</label>
-                        <input type="text" class="form-control" placeholder="Enter your name">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Standard</label>
-                        <input type="text" class="form-control" placeholder="Enter your standard">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">School/College</label>
-                        <input type="text" class="form-control" placeholder="Enter your school/college">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Board</label>
-                        <input type="text" class="form-control" placeholder="Enter your board">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Subject</label>
-                        <input type="text" class="form-control" placeholder="Enter your subject">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Contact No.</label>
-                        <input type="text" class="form-control" placeholder="Enter your contact number">
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
+    <div class="row enquiry-container">
+        <div class="col-md-6 form-image d-none d-md-block"></div>
+        <div class="col-md-6 p-4">
+            <h3 class="mb-4 text-center">Enquiry Form</h3>
+            <form action="enquiry_process.php" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Standard</label>
+                    <input type="text" class="form-control" name="standard" placeholder="Enter your standard" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">School/College</label>
+                    <input type="text" class="form-control" name="school_college" placeholder="Enter your school/college" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Board</label>
+                    <input type="text" class="form-control" name="board" placeholder="Enter your board" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-control" name="subject" placeholder="Enter your subject" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Contact No.</label>
+                    <input type="text" class="form-control" name="contact_no" placeholder="Enter your contact number" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
+
 
 <!-- -----------Faq--------------- -->
 <div class="container my-5">

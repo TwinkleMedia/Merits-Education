@@ -1,0 +1,221 @@
+:root {
+    --primary-color: #03214E;
+    --secondary-color: #967AA0;
+    --text-color: #333;
+    --transition-speed: 0.3s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f9;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(90deg, rgba(0,0,1,1) 0%, rgba(156,19,2,1) 36%);
+    color: white;
+    transition: all var(--transition-speed) ease;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: opacity var(--transition-speed);
+}
+
+.collapsed .logo-text {
+    display: none;
+}
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.5rem;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 5px 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all var(--transition-speed);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.nav-link.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    width: 30px;
+    text-align: center;
+}
+
+.nav-text {
+    margin-left: 10px;
+    transition: opacity var(--transition-speed);
+}
+
+.collapsed .nav-text {
+    display: none;
+}
+
+/* Add new logout styles */
+.logout-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    transition: all var(--transition-speed);
+}
+
+.logout-btn:hover {
+    background: rgba(255, 0, 0, 0.2);
+    color: white;
+}
+
+.logout-btn i {
+    font-size: 1.2rem;
+    width: 30px;
+    text-align: center;
+}
+
+/* Update mobile styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 250px !important;
+    }
+
+    .sidebar.mobile-active {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .mobile-overlay.active {
+        display: block;
+    }
+
+    .logout-container {
+        position: fixed;
+        bottom: 20px;
+        width: 250px;
+        padding: 0 10px;
+    }
+
+    .mobile-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1001;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    .logo-text, .nav-text {
+        display: block !important;
+    }
+
+    .user-profile {
+        display: block !important;
+    }
+}
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+/* Tooltip for collapsed state */
+.collapsed .nav-link {
+    position: relative;
+}
+
+.collapsed .nav-link:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 1000;
+}

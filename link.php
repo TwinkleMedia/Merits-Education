@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="mediaquery.css">
 <link rel="stylesheet" href="./header/navbar.css">
 
-
+<link rel="stylesheet" href="video.css">
 
 <script src="https://kit.fontawesome.com/2a5cfacbfd.js" crossorigin="anonymous"></script>
 

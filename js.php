@@ -91,22 +91,31 @@
 
 <!-- --------Gallery---------------- -->
 <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const filterButtons = document.querySelectorAll(".filter-btn");
-            const galleryItems = document.querySelectorAll(".gallery-item");
-            
-            filterButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    const filter = this.getAttribute("data-filter");
-                    
-                    galleryItems.forEach(item => {
-                        if (filter === "all" || item.classList.contains(filter)) {
-                            item.classList.add("show");
-                        } else {
-                            item.classList.remove("show");
-                        }
-                    });
+  document.addEventListener('DOMContentLoaded', function() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        // Add click event to filter buttons
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Get filter value
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Filter gallery items
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 });
             });
         });
-    </script>
+    });
+</script>
