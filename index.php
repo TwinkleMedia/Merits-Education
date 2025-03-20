@@ -96,7 +96,7 @@
     </div>
     
 
-    <!-- ----About us  -->
+    <!-- ----About us   -->
     <div class="container">
     <div class="row about-section align-items-center">
         <div class="col-12 col-md-6 about-img">
