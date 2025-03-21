@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="bg-dark text-light pt-5 pb-3" id="footer">
+<footer class="bg-dark text-light pt-5 pb-3" id="contact">
     <div class="container">
         <div class="row">
             <!-- Company Info -->
