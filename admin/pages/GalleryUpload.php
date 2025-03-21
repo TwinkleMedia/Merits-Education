@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
         
-        echo "<script>alert('Gallery uploaded successfully!'); window.location.href='/uploadGalleryImage.php';</script>";
+        echo "<script>alert('Gallery uploaded successfully!'); window.location.href='uploadGalleryImage.php';</script>";
     } else {
         echo "<script>alert('Please upload at least one image.'); window.history.back();</script>";
     }
