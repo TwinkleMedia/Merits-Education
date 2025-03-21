@@ -25,8 +25,8 @@
                 <!-- <p>Email: contact@example.com</p> -->
                 <p>Phone:+91 83558 72885 +91 99872 76315</p>
                 <p><strong>Branch 1 (Seawood):</strong> Aakash CHS., Shop no.3 & 9, plot 8&9,
-Sector 42, near to 'Seawoods Grand Central' Mall., behind Naturals Icecream.
-SEAWOODS (W). </p>
+                    Sector 42, near to 'Seawoods Grand Central' Mall., behind Naturals Icecream.
+                    SEAWOODS (W). </p>
                 <p><strong>Branch 2 (Ulwe):</strong> 456 Ulwe Avenue, City, Country</p>
                 <div>
                     <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
@@ -40,7 +40,7 @@ SEAWOODS (W). </p>
             <div class="col-md-3">
                 <h5>Our Locations</h5>
                 <div class="map-responsive mb-2">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.992991355149!2d73.017663!3d19.020030500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3bdd1db03d3%3A0x19aeae4fe27138e7!2sMERITS%20EDUCATION!5e0!3m2!1sen!2sin!4v1742493331066!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.992991355149!2d73.017663!3d19.020030500000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c3bdd1db03d3%3A0x19aeae4fe27138e7!2sMERITS%20EDUCATION!5e0!3m2!1sen!2sin!4v1742493331066!5m2!1sen!2sin" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <!-- <div class="map-responsive">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093724!2d144.95373631531673!3d-37.81627974202144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5773a5d5f7b6f48!2s456%20Ulwe%20Avenue%2C%20City%2C%20Country!5e0!3m2!1sen!2sus!4v1614064671712!5m2!1sen!2sus" 
@@ -59,7 +59,7 @@ SEAWOODS (W). </p>
     </div>
 </footer>
 
- <!-- WhatsApp Button -->
- <a href="https://wa.me/919987276315" target="_blank" class="whatsapp-button">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-    </a>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919987276315" target="_blank" class="whatsapp-button">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+</a>
