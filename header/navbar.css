@@ -1,5 +1,5 @@
 .navbar {
-    background: linear-gradient(45deg, #7e2c27, #510400) !important;
+    background: linear-gradient(45deg, #3489c6, #1E70A9) !important;
 }
 .navbar-brand {
     font-weight: bold;
@@ -23,9 +23,3 @@
 }
 
 
-.navbar-toggler {
-    border-color: white !important;
-}
-.navbar-toggler-icon {
-    filter: invert(1);
-}
