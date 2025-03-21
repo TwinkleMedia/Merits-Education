@@ -41,11 +41,11 @@ try {
     mysqli_commit($conn);
 
     // Show success message and redirect
-    echo "<script>alert('Gallery and all associated images deleted successfully'); window.location.href='uploadGalleryimage.php';</script>";
+    echo "<script>alert('Gallery and all associated images deleted successfully'); window.location.href='uploadGalleryImage.php';</script>";
 } catch (Exception $e) {
     // Rollback transaction on error
     mysqli_rollback($conn);
-    echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='uploadGalleryimage.php';</script>";
+    echo "<script>alert('Error: " . $e->getMessage() . "'); window.location.href='uploadGalleryImage.php';</script>";
 }
 
 // Close connection
