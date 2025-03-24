@@ -23,7 +23,7 @@
             <div class="col-md-3">
                 <h5>Contact Us</h5>
                 <!-- <p>Email: contact@example.com</p> -->
-                <p>Phone:+91 83558 72885 +91 99872 76315</p>
+                <p>Phone:+91 83558 72885 +91 99872 76315 +91 99676 92638</p>
                 <p><strong>Branch 1 (Seawood):</strong> Aakash CHS., Shop no.3 & 9, plot 8&9,
                     Sector 42, near to 'Seawoods Grand Central' Mall., behind Naturals Icecream.
                     SEAWOODS (W). </p>
