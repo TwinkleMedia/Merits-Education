@@ -27,7 +27,7 @@
                 <p><strong>Branch 1 (Seawood):</strong> Aakash CHS., Shop no.3 & 9, plot 8&9,
                     Sector 42, near to 'Seawoods Grand Central' Mall., behind Naturals Icecream.
                     SEAWOODS (W). </p>
-                <p><strong>Branch 2 (Ulwe):</strong> 456 Ulwe Avenue, City, Country</p>
+                <!-- <p><strong>Branch 2 (Ulwe):</strong> 456 Ulwe Avenue, City, Country</p> -->
                 <div>
                     <a href="#" class="text-light me-3"><i class="fab fa-facebook"></i></a>
                     <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
