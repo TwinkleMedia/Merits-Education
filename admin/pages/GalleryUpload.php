@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ensure at least one file is uploaded
     if (!empty($_FILES['images']['name'][0])) {
         $imageCount = count($_FILES['images']['name']);
-        if ($imageCount > 10) {
+        if ($imageCount > 100) {
             die("You can upload a maximum of 10 images.");
         }
         
