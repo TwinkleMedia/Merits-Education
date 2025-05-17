@@ -352,6 +352,12 @@
                         <span class="nav-text">Upload Videos</span>
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <a href="../../../Merits-Education/admin/pages/uploadResult.php" class="nav-link" data-title="Upload Videos">
+                       <i class="fa-solid fa-user"></i>
+                        <span class="nav-text">Upload Result</span>
+                    </a>
+                </li>
             </ul>
             
             <!-- Logout Button -->

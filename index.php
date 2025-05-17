@@ -84,6 +84,7 @@ $result = mysqli_query($conn, $query);
     </div>
 </div>
 
+<?php include './result.php' ?>
 
 <!-- ----------------Special annoucement -->
 
