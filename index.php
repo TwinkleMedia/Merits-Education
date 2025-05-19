@@ -24,7 +24,7 @@ $result = mysqli_query($conn, $query);
     <?php
     $active = true;
     while ($row = mysqli_fetch_assoc($result)) {
-        $imagePath = './admin/pages/' . $row['image_path']; // Ensure correct path
+        $imagePath = '../../admin/pages/' . $row['image_path']; // Ensure correct path
         ?>
         <div class="carousel-item <?php echo $active ? 'active' : ''; ?>">
             <img src="<?php echo $imagePath; ?>" class="d-block w-100" alt="Slider Image">
