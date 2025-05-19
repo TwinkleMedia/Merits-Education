@@ -353,7 +353,7 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a href="./uploadResult.php" class="nav-link" data-title="Upload Videos">
+                    <a href="../../admin/pages/uploadResult.php" class="nav-link" data-title="Upload Videos">
                        <i class="fa-solid fa-user"></i>
                         <span class="nav-text">Upload Result</span>
                     </a>
