@@ -68,8 +68,149 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link rel="stylesheet" href="./results.css">
-   
+    
+    <style>
+        /* Custom styles for student slider */
+        .student-slider {
+            padding: 20px 50px;
+            position: relative;
+        }
+        
+        .student-card {
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+        }
+        
+        .student-image-wrapper {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #f8f9fa;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .student-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ribbon-wrapper {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+        }
+        
+        .ribbon {
+            background-color: #5e72e4;
+            color: white;
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .achievement-badge {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            background-color: #f1f3f9;
+            color: #5e6c84;
+        }
+        
+        .achievement-badge.gold {
+            background-color: #fef7e6;
+            color: #daa520;
+        }
+        
+        .achievement-badge.silver {
+            background-color: #f1f3f6;
+            color: #a9a9a9;
+        }
+        
+        .achievement-badge.bronze {
+            background-color: #fcf0e6;
+            color: #cd7f32;
+        }
+        
+        .star-ratings {
+            color: #ffc107;
+        }
+        
+        .slick-prev, 
+        .slick-next {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .slick-prev:before, 
+        .slick-next:before {
+            color: #5e72e4;
+            opacity: 1;
+        }
+        
+        .slick-dots li button:before {
+            font-size: 12px;
+            color: #5e72e4;
+        }
+        
+        .progress-bar {
+            background-color: #5e72e4;
+            border-radius: 5px;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #5e6c84;
+        }
+        
+        .info-value {
+            font-weight: 500;
+        }
+        
+        .percentage-display {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        
+        .gold-trophy {
+            color: #daa520;
+        }
+        
+        .silver-medal {
+            color: #a9a9a9;
+        }
+        
+        .bronze-award {
+            color: #cd7f32;
+        }
+        
+        @media (max-width: 767.98px) {
+            .student-slider {
+                padding: 10px 30px;
+            }
+            
+            .student-image-wrapper {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Debug Information -->
@@ -94,9 +235,9 @@ $conn->close();
             </div>
 
             <?php if (count($students) > 0): ?>
-            <div class="row">
+            <div class="student-slider">
                 <?php foreach ($students as $student): ?>
-                <div class="col-md-4 mb-4">
+                <div class="slider-item">
                     <div class="student-card h-100">
                         <div class="card border-0 shadow-sm h-100">
                             <div class="ribbon-wrapper">
@@ -211,15 +352,6 @@ $conn->close();
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- <?php if (isset($student['upload_time'])): ?>
-                                <div class="upload-date mt-3">
-                                    <small class="text-muted">
-                                        <i class="far fa-calendar-alt me-1"></i>
-                                        <?php echo date('M d, Y', strtotime($student['upload_time'])); ?>
-                                    </small>
-                                </div>
-                                <?php endif; ?> -->
                             </div>
                         </div>
                     </div>
@@ -240,17 +372,66 @@ $conn->close();
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (required for Slick) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Slick Carousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
-        // Simple initialization - remove carousel complexity for now
         document.addEventListener('DOMContentLoaded', function() {
             console.log("Student results page loaded successfully");
             console.log("Found <?php echo count($students); ?> student records");
             
-            // Add any simple interactive elements here if needed
-            document.querySelectorAll('.student-card').forEach(card => {
-                card.addEventListener('click', function() {
-                    this.classList.toggle('shadow-lg');
+            // Initialize Slick carousel
+            $(document).ready(function(){
+                $('.student-slider').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    dots: true,
+                    arrows: true,
+                    infinite: true,
+                    pauseOnHover: true,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false
+                            }
+                        }
+                    ]
                 });
+                
+                // Add animation effect on card hover
+                $('.student-card').hover(
+                    function() {
+                        $(this).addClass('shadow-lg').css('transform', 'translateY(-10px)');
+                    },
+                    function() {
+                        $(this).removeClass('shadow-lg').css('transform', 'translateY(0)');
+                    }
+                );
+                
+                // Add custom class to slick dots
+                setTimeout(function() {
+                    $('.slick-dots').addClass('mt-4');
+                }, 100);
             });
         });
     </script>
