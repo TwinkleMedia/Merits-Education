@@ -1,10 +1,8 @@
 <?php 
-
+include '../login/dbconfig.php'; // Include your database connection
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-include '../login/dbconfig.php'; // Include your database connection
 
 // Process form submission
 if (isset($_POST['submit'])) {
@@ -150,7 +148,56 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./page.css">
-
+    <style>
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .card-header {
+            background-color: #4e73df;
+            color: white;
+            border-radius: 15px 15px 0 0 !important;
+            padding: 15px 20px;
+        }
+        .btn-primary {
+            background-color: #4e73df;
+            border-color: #4e73df;
+        }
+        .btn-primary:hover {
+            background-color: #2e59d9;
+            border-color: #2e59d9;
+        }
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 5px;
+            display: none;
+        }
+        .required:after {
+            content: " *";
+            color: red;
+        }
+        .table-responsive {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .student-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .delete-btn {
+            color: #dc3545;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .delete-btn:hover {
+            color: #bb2d3b;
+        }
+    </style>
 </head>
 
 <body>
