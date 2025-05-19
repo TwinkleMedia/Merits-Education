@@ -197,6 +197,57 @@ $result = $conn->query($sql);
         .delete-btn:hover {
             color: #bb2d3b;
         }
+        /* Add these styles to your page.css file or directly in the style section */
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.content {
+    flex: 1;
+    margin-left: 250px; /* Width of expanded sidebar */
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 250px);
+}
+
+.sidebar.collapsed + .content {
+    margin-left: 70px; /* Width of collapsed sidebar */
+    width: calc(100% - 70px);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px; /* Hide sidebar off-screen on mobile */
+    }
+    
+    .sidebar.mobile-active {
+        left: 0; /* Show sidebar when active on mobile */
+    }
+    
+    .content {
+        margin-left: 0; /* No sidebar margin on mobile */
+        width: 100%;
+    }
+    
+    .sidebar.collapsed + .content {
+        margin-left: 0; /* No sidebar margin on mobile */
+        width: 100%;
+    }
+}
     </style>
 </head>
 
