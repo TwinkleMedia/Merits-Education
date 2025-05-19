@@ -1,3 +1,63 @@
+<?php
+// Enable full error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Include database connection
+include './dbconnuser.php';
+
+// Check connection
+if ($conn->connect_error) {
+    die("<div class='alert alert-danger'>Connection failed: " . $conn->connect_error . "</div>");
+}
+
+// Initialize variables
+$students = [];
+$debug_info = [];
+
+try {
+    // Fetch student results
+    $sql = "SELECT * FROM student_results WHERE status = 1 ORDER BY upload_time DESC";
+    $result = $conn->query($sql);
+    
+    if (!$result) {
+        throw new Exception("Query failed: " . $conn->error);
+    }
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $students[] = $row;
+        }
+        $debug_info[] = "Found " . count($students) . " student records";
+    } else {
+        $debug_info[] = "No student records found with status = 1";
+    }
+
+    // Debug table info
+    $check_table = $conn->query("SHOW TABLES LIKE 'student_results'");
+    if ($check_table->num_rows == 0) {
+        $debug_info[] = "The table 'student_results' does not exist!";
+    } else {
+        $count_result = $conn->query("SELECT COUNT(*) as total FROM student_results");
+        if ($count_result) {
+            $count_row = $count_result->fetch_assoc();
+            $debug_info[] = "Total records in student_results table: " . $count_row['total'];
+            
+            $status_result = $conn->query("SELECT COUNT(*) as active FROM student_results WHERE status = 1");
+            $status_row = $status_result->fetch_assoc();
+            $debug_info[] = "Records with status = 1: " . $status_row['active'];
+        }
+    }
+
+} catch (Exception $e) {
+    $debug_info[] = "Error: " . $e->getMessage();
+}
+
+// Close connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +68,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- jQuery (required for Slick) - MOVED TO HEAD -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Slick Carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -152,14 +210,20 @@
                 height: 120px;
             }
         }
-        
-        /* Add to ensure slider is visible during debugging */
-        .slick-list {
-            overflow: visible !important;
-        }
     </style>
 </head>
 <body>
+    <!-- Debug Information -->
+    <div class="container mt-3 debug-info" style="display: none;">
+        <h4>Debug Information:</h4>
+        <ul>
+            <?php foreach ($debug_info as $info): ?>
+                <li><?php echo htmlspecialchars($info); ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <p>SQL Query: <?php echo htmlspecialchars($sql ?? ''); ?></p>
+    </div>
+
     <!-- Student Results Showcase Section -->
     <section class="student-results-showcase py-5">
         <div class="container">
@@ -194,6 +258,9 @@
                                             $image_path = $student['image_path'];
                                         }
                                     }
+                                    // Debug - uncomment if needed
+                                    // echo "<!-- Original path: " . htmlspecialchars($student['image_path'] ?? '') . " -->";
+                                    // echo "<!-- Corrected path: " . htmlspecialchars($image_path) . " -->";
                                     ?>
                                     <img src="<?php echo htmlspecialchars($image_path); ?>" 
                                          alt="<?php echo htmlspecialchars($student['student_name'] ?? 'Student'); ?>" 
@@ -305,113 +372,68 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (required for Slick) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Slick Carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    
     <script>
-        // Ensure jQuery is loaded before attempting to use it
-        window.addEventListener('load', function() {
-            // Check if jQuery is loaded
-            if (typeof jQuery === 'undefined') {
-                console.error('jQuery is not loaded!');
-                // Try to load jQuery dynamically
-                var script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js';
-                script.onload = initSlider;
-                document.head.appendChild(script);
-            } else {
-                console.log('jQuery is loaded. Version: ' + jQuery.fn.jquery);
-                // Initialize slider when everything is fully loaded
-                initSlider();
-            }
-        });
-
-        function initSlider() {
-            console.log('Initializing slider...');
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Student results page loaded successfully");
+            console.log("Found <?php echo count($students); ?> student records");
             
-            // Make sure slick is available
-            if (typeof jQuery.fn.slick === 'undefined') {
-                console.error('Slick is not loaded!');
-                return;
-            }
-            
-            // Force reflow to ensure DOM is ready
-            $('.student-slider')[0].offsetHeight;
-            
-            // Initialize slider with a small delay to ensure DOM is ready
-            setTimeout(function() {
-                try {
-                    $('.student-slider').slick({
-                        slidesToShow: 3,
-                        slidesToScroll: 1,
-                        autoplay: true,
-                        autoplaySpeed: 3000,
-                        dots: true,
-                        arrows: true,
-                        infinite: true,
-                        pauseOnHover: true,
-                        responsive: [
-                            {
-                                breakpoint: 1200,
-                                settings: {
-                                    slidesToShow: 3,
-                                    slidesToScroll: 1
-                                }
-                            },
-                            {
-                                breakpoint: 992,
-                                settings: {
-                                    slidesToShow: 2,
-                                    slidesToScroll: 1
-                                }
-                            },
-                            {
-                                breakpoint: 768,
-                                settings: {
-                                    slidesToShow: 1,
-                                    slidesToScroll: 1,
-                                    arrows: false
-                                }
+            // Initialize Slick carousel
+            $(document).ready(function(){
+                $('.student-slider').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    dots: true,
+                    arrows: true,
+                    infinite: true,
+                    pauseOnHover: true,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 1
                             }
-                        ]
-                    });
-                    
-                    console.log('Slick initialized successfully');
-                    
-                    // Manually trigger autoplay if needed
-                    setTimeout(function() {
-                        $('.student-slider').slick('slickPlay');
-                        console.log('Manually triggered slick play');
-                    }, 1000);
-                    
-                    // Add animation effect on card hover
-                    $('.student-card').hover(
-                        function() {
-                            $(this).addClass('shadow-lg').css('transform', 'translateY(-10px)');
                         },
-                        function() {
-                            $(this).removeClass('shadow-lg').css('transform', 'translateY(0)');
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: 2,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false
+                            }
                         }
-                    );
-                    
-                    // Add custom class to slick dots
+                    ]
+                });
+                
+                // Add animation effect on card hover
+                $('.student-card').hover(
+                    function() {
+                        $(this).addClass('shadow-lg').css('transform', 'translateY(-10px)');
+                    },
+                    function() {
+                        $(this).removeClass('shadow-lg').css('transform', 'translateY(0)');
+                    }
+                );
+                
+                // Add custom class to slick dots
+                setTimeout(function() {
                     $('.slick-dots').addClass('mt-4');
-                } catch (e) {
-                    console.error('Error initializing slick: ', e);
-                }
-            }, 500);
-        }
-        
-        // Add this to debug any issues with slider visibility
-        function checkSliderVisibility() {
-            console.log('Student slider count: ' + $('.student-slider .slider-item').length);
-            console.log('Slider visibility: ' + ($('.student-slider').is(':visible') ? 'visible' : 'hidden'));
-            console.log('Slider width: ' + $('.student-slider').width());
-            console.log('Slider height: ' + $('.student-slider').height());
-        }
-        
-        // Run visibility check after a delay
-        setTimeout(checkSliderVisibility, 2000);
+                }, 100);
+            });
+        });
     </script>
 </body>
 </html>
