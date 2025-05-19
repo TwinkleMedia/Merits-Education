@@ -72,8 +72,8 @@ $conn->close();
    
 </head>
 <body>
-    <!-- Debug Information
-    <div class="container mt-3 debug-info">
+    <!-- Debug Information -->
+    <div class="container mt-3 debug-info" style="display: none;">
         <h4>Debug Information:</h4>
         <ul>
             <?php foreach ($debug_info as $info): ?>
@@ -81,7 +81,7 @@ $conn->close();
             <?php endforeach; ?>
         </ul>
         <p>SQL Query: <?php echo htmlspecialchars($sql ?? ''); ?></p>
-    </div> -->
+    </div>
 
     <!-- Student Results Showcase Section -->
     <section class="student-results-showcase py-5">
@@ -104,8 +104,24 @@ $conn->close();
                             </div>
                             <div class="student-image-container text-center py-4">
                                 <div class="student-image-wrapper mx-auto">
-                                    <?php $image_path = str_replace('./uploads/', './admin/pages/uploads/', $student['image_path']); ?>
-                                    <img src="<?php echo htmlspecialchars($imagePath); ?>" 
+                                    <?php 
+                                    // Fix the image path by correctly replacing the database path with the actual server path
+                                    $image_path = '';
+                                    if (isset($student['image_path'])) {
+                                        // Ensure we're dealing with the expected format from the database
+                                        if (strpos($student['image_path'], './uploads/') === 0) {
+                                            // This creates the correct path relative to the current file
+                                            $image_path = str_replace('./uploads/', './admin/pages/uploads/', $student['image_path']);
+                                        } else {
+                                            // If the path doesn't have the expected format, use it as is
+                                            $image_path = $student['image_path'];
+                                        }
+                                    }
+                                    // Debug - uncomment if needed
+                                    // echo "<!-- Original path: " . htmlspecialchars($student['image_path'] ?? '') . " -->";
+                                    // echo "<!-- Corrected path: " . htmlspecialchars($image_path) . " -->";
+                                    ?>
+                                    <img src="<?php echo htmlspecialchars($image_path); ?>" 
                                          alt="<?php echo htmlspecialchars($student['student_name'] ?? 'Student'); ?>" 
                                          class="student-image"
                                          onerror="this.src='https://via.placeholder.com/150'">
